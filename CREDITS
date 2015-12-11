@@ -1,0 +1,7 @@
+This file contains the name of the people who have contributed to
+Fabula Framework. The names are sorted alphabetically by first name.
+
+Bruno P. Gonçalves
+Erick Eden Fróes			FFWEntry::__openCalendar(), FFWEntry::__changedayCalendar()
+Pablo Dall'Oglio			FFWEntry::__unMask(), FFWEntry::__changeMask()
+Fabrício Cruz Casarini		Wiki, FFWHButtonBox

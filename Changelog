@@ -1,0 +1,178 @@
+REV 1
+-- Adicionada a separação dos métodos por classes
+-- Adicionada a classe FDialogs e FTreeViews
+-- Adicionada a classe minimizablePanel
+-- Adicionada a classe FMenus com o método menuLoadXML
+-- Adicionado o método de leitura de arquivos de configuração XML loadXMLConfig
+-- Adicionado a classe DeskAlert
+-- Adicionado criação de botões diretamente por imagem, newButtonFromImage
+-- Adicionada a função para criação de labels ja alinhados à esquerda
+-- Mudança no nome do objeto ao esconder o splashscreen
+-- Adicionado suporte à eventos no XML dos menus no método menuLoadXML()
+-- Adicionado suporte experimental de carregamento de treeview apartir de XML
+-- Adicionado a classe de entries
+-- Adicionado o EntryCalendar
+-- Adicionado suporte experimental de carregamento de toolbars apartir de XML
+-- Adicionado a classe de textview
+-- Adicionado a classe de combobox
+-- Criação da constante e diretório temporario
+-- Separação dos diretórios de widgets e de classes
+-- Criação do diretório extras
+-- Criação da função de remover diretórios recursivamente
+-- Criação experimental do GtkWebCam
+
+REV 16
+-- Removido o  classes/entries.class.php
+-- Adicionado o /widgets/entry.widget.php
+-- Adicionado a classe FFWEntry com formatação de mascara e calendario
+-- Mudança dos nomes das classes de extensão FFWLabel, FFWTextView, FFWComboBox
+-- Criação da classe FFWViewPort
+-- Atualização dos comentarios da classe Fabula, FFWLabel, FFWTextView, FFWComboBox, FFWViewPort, FFWEntry
+
+REV 55
+-- Mudança ao abrir o calendario no FFWEntry, setando a data escrita no entry
+
+REV 62
+-- Mudança do padrão de documentação e de arquivos do GtkWebCam
+-- Mudança do padrão de documentação e de arquivos do GtkDeskAlert
+
+REV 64
+-- Adição do parametro mime na função makeThumb dos extras
+-- Adicionado o parametro onformat nas colunas do treeview
+-- Adicionado o metodo clear do GtkComboBox
+-- Mudança da forma de seleção do método set_selected_value no GtkComboBox
+-- Verificação nos métodos de busca de seleção no GtkComboBox
+-- Criação da classe FFWComboBoxEntry
+-- FIXED: Removido o bloqueio do script no MYSQL ao encontrar erro na execução de query no método AutoExecute
+-- Criação da classe FFWTreeView
+
+REV 65
+-- Adição do método de busca de valor do treeview
+-- Adicionado a biblioteca ADOdb ao projeto
+-- Adicionado o método ADOdbConnection para criação de objetos ADOdb
+-- Mudança do método de adicionar colunas ao treeview na classe FFWTreeView, retornando o objeto da coluna
+-- Adicionado o método get_selected_values na classe FFWTreeView
+
+REV 67
+-- Mudanças do método de criação do splash, adicionando um GtkFixed para possibilitar a adição de componentes na tela
+-- Criação da classe FFWButton
+-- Ajusta da inclução dos widgets em ordem por nome
+-- Comentario sobre o parametro $model do método GtkTreeView da classe principal
+-- Criação da classe FFWToolbar
+-- Adicionado o método clear na classe FFWTreeView
+-- Adicionado o método set_selection_mode na classe FFWTreeView
+-- Criação da classe FFWMenuBar
+-- Criação da classe FFWMenu
+-- Criação da classe FFWMenuItem
+-- Adicionado o demo GtkMenuBar
+
+REV 70
+-- Criação da classe FFWHButtonBox enviada pelo Fabrício Cruz Casarini
+-- Remoção dos copyrights
+
+REV 80
+-- FIXED: nome do método errado na documentação do set_policy da classe FFWViewPort
+-- Adicionado o demo para GtkEntry
+
+REV 108
+-- Documentação das classes para suportar auto-documentação com phpDoc
+-- Adicionado as classes de definição da extensão php-gtk
+
+REV 109
+-- Adicionado o método append_menu() na classe FFWMenu, para adicionar submenus
+
+REV 110
+-- Adicionado o demo para o GtkToolbar
+-- Mudanças no método GtkToolbar::append_button_from_image para suportar imagem com o mesmo estilo do GtkToolButton e tooltips
+-- Mudanças no método GtkToolbar::append_button_from_stock para suportar tooltips
+
+REV 111
+-- Mudanças no demo do GtkToolbar adicionando os parametros de tooltip e removendo o parametro de descrição do tooltip
+-- Adicionado o show_all nos métodos para adicionar os itens de menu no GtkMenu para forçar atualização quando criado em run-time
+-- Adicionado métodos para criação de menus em toolbar apartir de images e de stockitens. Atualização do demo
+-- Adicionado métodos para criação de toggle buttons no toolbar apartir de images e de stockitens. Atualização do demo
+-- Criação da classe e o demo FFWFileChooserDialog
+
+REV 112
+-- Mudança na documentação do FFWComboBox.widget.php no método get_selected_value()
+-- Mudança na documentação do construtor do FFWFileChooserDialog.widget.php
+-- Removido o método ChooseFile, Alert e MsgBox da classe main
+-- Criação da classe FFWMessageDialog
+-- Criação do demo para GtkMessageDialog
+-- Mudança da classe FFWTreeView, no método get_selected_rows, buscando a quantidade de colunas do model, e não mais do treeview
+-- Criação da classe FFWToolContainer para adicionar botões com container
+-- Mudanças na classs FFWToolbar adicionando o método append_container_from_stock
+-- Mudanças na classe FFWToolbar adicionando o label 
+
+REV 113
+-- Mudanças na documentação de alguns métodos da classe Fabula, adicionando os parametros
+-- Criação da classe FFWWindow e adicionado o demo
+-- Adicionado os métodos da janela Splash na classe FFWWindow
+-- Remoção da classe Dialogs e do arquivo classes/dialogs.class.php
+-- Adicionada a constante de diretório temporario FABULA_TMP
+-- Criação do método de desbloqueio do loop gtk DoEvents
+-- Adicionado a classe PipeIO para manipulação de comandos via pipe. O autor da classe não foi encontrado, porem foi adicionado comentarios ao código
+-- Adicionado o demo da classe PipeIO
+-- Adicionado o demo da classe GtkWebCam
+
+REV 114
+-- Adicionado método append_toolitem na classe FFWToolbar para adicionar widgets ao toolbar
+-- Mudança no método append_item da classe FFWMenu, passando o callback ao adicionar um item. Atualização do demo GtkMenuBar
+-- Adicionado o método add_node_row na classe FFWTreeView para passar valores com nós
+
+REV 114
+-- Adicionado método append_toolitem na classe FFWToolbar para adicionar widgets ao toolbar
+-- Mudança no método append_item da classe FFWMenu, passando o callback ao adicionar um item. Atualização do demo GtkMenuBar
+-- Adicionado o método add_node_row na classe FFWTreeView para passar valores com nós
+-- Adicionado o demo do GtkWebCam ao repositório
+
+REV 115
+-- Adicionado o método get_filepath no objeto FFWFileChooserDialog para buscar o diretório selecionado
+
+REV 116
+-- Adicionado parametro para adicionar o stockitem ao adicionar item ao menu na classe FFWMenu, método GtkMenu
+
+REV 117 
+-- Mudança na chamada da classe ADOdbConnection
+-- Adicionado o método set_command à classe Pipe
+-- Adicionado parametro no contrutor da classe FFWButton para receber o callback do click
+-- Mudança na classe Pipe no método stdout para remover o watch caso o pipe não for um resource
+-- Adicionado a classe FFWVideo para carregamento de video
+
+REV 118
+-- Adicionada a verificação se o pipe existe ao escrever na classe GtkVideo método __command
+-- Adicionada a verificação se o pipe existe ao destruir classe GtkVideo
+-- Mudança na classe FFWFileChooserDialog, mudando o formato do filtro
+-- Mudança no demo GtkFileChooserDialog para mostrar a utilização dos filtros
+-- Adicionado o demo do GtkVideo
+-- Mudança da verificação do callback video-changed do GtkVideo
+-- Removido o comando set_command do pipe no método play do GtkVideo 
+
+REV 119
+-- Adicionado o método que retorna os indices selecionados num treeview FFWTreeView::get_selected_paths()
+-- Adicionado o método que remove os indices selecionados num treeview FFWTreeView::remove_row()
+-- Adicionado o método de remoção no tempo do teeview
+
+REV 120
+-- Criada a versão inicial do fabula tools
+-- Ajustes na formatação do código do arquivo Fabula.class.php
+-- Ajustes na formatação do código do arquivo FFWWebCam.widget.php
+-- Ajustes na formatação do código do arquivo FFWVideo.widget.php
+-- Ajustes na formatação do código dos arquivos de definição
+-- Verificação do sistema operacional nos widgets GtkVideo e GtkWebCam
+-- Acerto no comentario do demo da classe PipeIO
+
+REV 121
+-- Acerto da identação da classe FFWToolbar
+-- Adicionado o signal clicked do FFWToolbar para contemplar todos os botões
+-- Acerto da identação no demo GtkToolbar
+-- Update no demo do GtkToolbar adicionando o sinal clicked
+-- Criação inicial da classe de edição de códigos FFWSourceEditor
+-- Adicionada a classe de autocomplete do editor de códigos FFWSourceEditorAutocomplete
+-- Criação do demo da classe de edição de códigos
+
+REV 122
+-- Adicionado o método de autoscroll no GtkViewPort
+
+REV 123
+-- Adicionado o método de recuperação do toolitem pelo index na classe FFWToolbar
