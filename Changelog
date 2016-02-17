@@ -176,3 +176,17 @@ REV 122
 
 REV 123
 -- Adicionado o método de recuperação do toolitem pelo index na classe FFWToolbar
+
+REV 124
+-- Acertos de comentários
+-- Mudança do nome do widget GtkSourceEditor para GtkCodeEditor
+-- Mudança do nome do widget GtkSourceEditorAutocomplete para GtkCodeEditorAutocomplete
+-- Verificação se a classe GtkSourceView existe antes de criar a classe GtkCodeEditor
+-- Adicionada a possibilidade de adicionar model personalizado ao FFWIconView
+-- Adicionado o método get_selected_optional_arg no FFWIconView para buscar os arquigumentos opcionais do model personalizado
+-- Adicionado os argumentos opcionais ao método add_image_from_file da classe FFWIconView para adicionar argumentos personalizados
+
+REV 125
+-- Merge dos projetos
+-- Adição dos métodos estaticos (standard)
+-- Ajuste da classe FFWVideo, removendo parametro menu

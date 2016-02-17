@@ -244,9 +244,11 @@ class FFWVideo extends GtkEventbox {
 				
 			// Adiciona os ultimos parametros
 			$options = array_merge(
-			$this->render_options,
-				array("-slave", "-quiet", "-menu", "-wid", $this->socket->get_id(), escapeshellarg($this->render_file))
+				$this->render_options,
+				array("-slave", "-quiet", "-wid", $this->socket->get_id(), escapeshellarg($this->render_file))
 			);
+			
+			var_dump(implode(" ", $options));
 				
 			// Cria o pipe
 			$this->pipe = Fabula::PipeIO($this->render_path, $options);

@@ -45,10 +45,13 @@ require_once(FABULA_PATH . "/widgets/FFWProStatusBar.widget.php");
 
 // Inclui as classes de extensão dos widgets GTK
 require_once(FABULA_PATH . "/widgets/FFWButton.widget.php");
+require_once(FABULA_PATH . "/widgets/FFWCodeEditor.widget.php");
+require_once(FABULA_PATH . "/widgets/FFWCodeEditorAutocomplete.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWComboBox.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWComboBoxEntry.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWEntry.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWFileChooserDialog.widget.php");
+require_once(FABULA_PATH . "/widgets/FFWHBox.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWHButtonBox.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWIconView.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWLabel.widget.php");
@@ -56,12 +59,13 @@ require_once(FABULA_PATH . "/widgets/FFWMenu.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWMenuBar.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWMenuItem.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWMessageDialog.widget.php");
-require_once(FABULA_PATH . "/widgets/FFWSourceEditor.widget.php");
-require_once(FABULA_PATH . "/widgets/FFWSourceEditorAutocomplete.widget.php");
+//~ require_once(FABULA_PATH . "/widgets/FFWSourceEditor.widget.php");
+//~ require_once(FABULA_PATH . "/widgets/FFWSourceEditorAutocomplete.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWTreeView.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWToolbar.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWToolContainer.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWTextView.widget.php");
+require_once(FABULA_PATH . "/widgets/FFWVBox.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWVideo.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWViewPort.widget.php");
 require_once(FABULA_PATH . "/widgets/FFWWindow.widget.php");
@@ -90,7 +94,7 @@ class Fabula {
 	 * @param $stockImage (GtkStockItem): GtkStockItem com a imagem à ser mostrada no alerta
 	 * @deprecated
 	 */
-	public function Alert($strMessage, $strTitle, $stockImage=Gtk::STOCK_DIALOG_WARNING) {
+	static public function Alert($strMessage, $strTitle, $stockImage=Gtk::STOCK_DIALOG_WARNING) {
 		echo "Fabula::Alert() is deprecated. See Fabula::GtkMessageDialog() for more information.\n";
 	}
 
@@ -106,7 +110,7 @@ class Fabula {
 	 * @return $response (int): Retorna o GtkResponseType clicado
 	 * @deprecated
 	 */
-	public function MsgBox($strMessage, $strTitle, $buttons=array(Gtk::STOCK_OK, Gtk::RESPONSE_OK), $stockImage=Gtk::STOCK_DIALOG_WARNING) {
+	static public function MsgBox($strMessage, $strTitle, $buttons=array(Gtk::STOCK_OK, Gtk::RESPONSE_OK), $stockImage=Gtk::STOCK_DIALOG_WARNING) {
 		echo "Fabula::MsgBox() is deprecated. See Fabula::GtkMessageDialog() for more information.\n";
 	}
 
@@ -120,7 +124,7 @@ class Fabula {
 	 * @return $path (string): Retorna o path completo do arquivo selecionado
 	 * @deprecated
 	 */
-	public function ChooseFile($strTitle, $filters=NULL, $type=Gtk::FILE_CHOOSER_ACTION_OPEN) {
+	static public function ChooseFile($strTitle, $filters=NULL, $type=Gtk::FILE_CHOOSER_ACTION_OPEN) {
 		echo "Fabula::ChooseFile() is deprecated. See Fabula::GtkFileChooserDialog() for more information.\n";
 	}
 
@@ -132,7 +136,7 @@ class Fabula {
 	 * @return $splash (GtkWindow): Retorna o GtkWindow criado para o splash
 	 * @deprecated
 	 */
-	public function splashCreate($imagePath) {
+	static public function splashCreate($imagePath) {
 		echo "Fabula::splashCreate() is deprecated. See Fabula::GtkWindow() for more information.\n";
 	}
 
@@ -143,7 +147,7 @@ class Fabula {
 	 * @param $splashScreen (GtkWindow): GtkWindow criado com o splashCreate
 	 * @deprecated
 	 */
-	public function splashHide($splashScreen) {
+	static public function splashHide($splashScreen) {
 		echo "Fabula::splashCreate() is deprecated. See Fabula::GtkWindow() for more information.\n";
 	}
 
@@ -156,7 +160,7 @@ class Fabula {
 	 * @param $colorB (string): Cor da linha par
 	 * @deprecated
 	 */
-	public function treeviewHighLight($widget, $colorA, $colorB) {
+	static public function treeviewHighLight($widget, $colorA, $colorB) {
 		echo "Fabula::treeviewHighLight() is deprecated. See Fabula::GtkTreeView() for more information.\n";
 	}
 
@@ -172,7 +176,7 @@ class Fabula {
 	 * @return $objDB (MYSQL): Retorna o objeto MYSQL
 	 * @deprecated
 	 */
-	public function MySQL($server, $username, $password, $database, $logFile=NULL) {
+	static public function MySQL($server, $username, $password, $database, $logFile=NULL) {
 		// Cria o objeto MySQL
 		$objDB = new MYSQL($server, $username, $password, $database, $logFile);
 		if($objDB->LastError === FALSE) {
@@ -192,7 +196,7 @@ class Fabula {
 	 * @return $objDB (SQLITE): Retorna o objeto SQLITE
 	 * @deprecated
 	 */
-	public function SQLite($file, $logFile=NULL) {
+	static public function SQLite($file, $logFile=NULL) {
 		// Cria o objeto SQLITE
 		$objDB = new SQLITE($file, $logFile);
 		if(!$objDB) {
@@ -209,7 +213,7 @@ class Fabula {
 	 * @name minimizablePanel()
 	 * @deprecated
 	 */
-	public function minimizablePanel() {
+	static public function minimizablePanel() {
 		// Criação do painel minimizavel
 		return new minimizablePanel();
 	}
@@ -223,7 +227,7 @@ class Fabula {
 	 * @return $obj (array): Retorna o vetor com os objetos criados
 	 * @deprecated
 	 */
-	public function menuLoadXML($file, $mainObject=NULL) {
+	static public function menuLoadXML($file, $mainObject=NULL) {
 		// Cria menus a partir de XML
 		return FMenus::menuLoadXML($file, $mainObject);
 	}
@@ -236,7 +240,7 @@ class Fabula {
 	 * @return $arr (array): Retorna o vetor com os indexes criados
 	 * @deprecated
 	 */
-	public function loadXMLConfig($file) {
+	static public function loadXMLConfig($file) {
 		// Le o arquivo XML
 		$xml = new SimpleXMLElement(file_get_contents($file));
 		$arr = array();
@@ -272,7 +276,7 @@ class Fabula {
 	 * @return $button (GtkButton): Retorna o botão criado
 	 * @deprecated
 	 */
-	public function newButtonFromImage($image, $label=NULL) {
+	static public function newButtonFromImage($image, $label=NULL) {
 		// Criação do botão
 		$button = new GtkButton();
 
@@ -302,7 +306,7 @@ class Fabula {
 	 * @return $obj (array): Retorna o vetor com os objetos criados
 	 * @deprecated
 	 */
-	public function treeviewLoadXML($file, $mainObject=NULL) {
+	static public function treeviewLoadXML($file, $mainObject=NULL) {
 		// Cria o treeview
 		return FTreeViews::treeviewLoadXML($file, $mainObject);
 	}
@@ -316,7 +320,7 @@ class Fabula {
 	 * @return $obj (array): Retorna o vetor com os objetos criados
 	 * @deprecated
 	 */
-	public function toolbarLoadXML($file, $mainObject=NULL) {
+	static public function toolbarLoadXML($file, $mainObject=NULL) {
 		return FToolbars::toolbarLoadXML($file, $mainObject);
 	}
 
@@ -326,7 +330,7 @@ class Fabula {
 	 * @name Fabula::GtkDeskAlert()
 	 * @return FFWDeskAlert
 	 */
-	public function GtkDeskAlert() {
+	static public function GtkDeskAlert() {
 		// Criação do FFWDeskAlert
 		return new FFWDeskAlert();
 	}
@@ -337,7 +341,7 @@ class Fabula {
 	 * @name Fabula::GtkWebCam()
 	 * @return FFWWebCam
 	 */
-	public function GtkWebCam() {
+	static public function GtkWebCam() {
 		// Cria o FFWWebCam
 		return new FFWWebCam();
 	}
@@ -348,7 +352,7 @@ class Fabula {
 	 * @name Fabula::GtkComboBox()
 	 * @return FFWComboBox
 	 */
-	public function GtkComboBox() {
+	static public function GtkComboBox() {
 		// Cria o FFWComboBox
 		return new FFWComboBox();
 	}
@@ -360,7 +364,7 @@ class Fabula {
 	 * @example GtkEntry.php
 	 * @return FFWEntry
 	 */
-	public function GtkEntry() {
+	static public function GtkEntry() {
 		// Cria o FFWEntry
 		return new FFWEntry();
 	}
@@ -372,7 +376,7 @@ class Fabula {
 	 * @param string $string String com o texto do label
 	 * @return FFWLabel
 	 */
-	public function GtkLabel($string) {
+	static public function GtkLabel($string) {
 		// Cria o FFWLabel
 		return new FFWLabel($string);
 	}
@@ -383,7 +387,7 @@ class Fabula {
 	 * @name Fabula::GtkTextView()
 	 * @return FFWTextView
 	 */
-	public function GtkTextView() {
+	static public function GtkTextView() {
 		// Cria o FFWTextView
 		return new FFWTextView();
 	}
@@ -395,7 +399,7 @@ class Fabula {
 	 * @param GtkWidget $GtkWidget Widget para colocar dentro do GtkViewPort
 	 * @return FFWViewPort
 	 */
-	public function GtkViewPort($GtkWidget) {
+	static public function GtkViewPort($GtkWidget) {
 		// Cria o FFWViewPort
 		return new FFWViewPort($GtkWidget);
 	}
@@ -406,7 +410,7 @@ class Fabula {
 	 * @name Fabula::GtkIconView()
 	 * @return FFWIconView
 	 */
-	public function GtkIconView() {
+	static public function GtkIconView() {
 		// Cria o FFWIconView
 		return new FFWIconView();
 	}
@@ -417,7 +421,7 @@ class Fabula {
 	 * @name Fabula::GtkComboBoxEntry()
 	 * @return FFWComboBoxEntry
 	 */
-	public function GtkComboBoxEntry() {
+	static public function GtkComboBoxEntry() {
 		// Cria o FFWComboBoxEntry
 		return new FFWComboBoxEntry();
 	}
@@ -430,7 +434,7 @@ class Fabula {
 	 * @param GtkListStore $model Passa o modelo para o GtkTreeView
 	 * @return FFWTreeView
 	 */
-	public function GtkTreeView($GtkListStore=NULL) {
+	static public function GtkTreeView($GtkListStore=NULL) {
 		// Cria o FFWTreeView
 		return new FFWTreeView($GtkListStore);
 	}
@@ -444,7 +448,7 @@ class Fabula {
 	 * @param mixed $args Argumentos para a criação do objeto ADODB
 	 * @return NewADOConnection
 	 */
-	public function ADOdbConnection() {
+	static public function ADOdbConnection() {
 		// Busca os argumentos
 		$args = func_get_args();
 
@@ -460,7 +464,7 @@ class Fabula {
 	 * @param mixed $callback Função de callback
 	 * @return FFWButton
 	 */
-	public function GtkButton($label="", $callback=NULL) {
+	static public function GtkButton($label="", $callback=NULL) {
 		// Cria o FFWButton
 		return new FFWButton($label, $callback);
 	}
@@ -471,7 +475,7 @@ class Fabula {
 	 * @name Fabula::GtkToolbar()
 	 * @return FFWToolbar
 	 */
-	public function GtkToolbar() {
+	static public function GtkToolbar() {
 		// Cria o FFWToolbar
 		return new FFWToolbar();
 	}
@@ -483,7 +487,7 @@ class Fabula {
 	 * @example GtkMenuBar.php
 	 * @return FFWMenuBar
 	 */
-	public function GtkMenuBar() {
+	static public function GtkMenuBar() {
 		// Cria o FFWMenuBar
 		return new FFWMenuBar();
 	}
@@ -494,7 +498,7 @@ class Fabula {
 	 * @name Fabula::GtkMenu()
 	 * @return FFWMenu
 	 */
-	public function GtkMenu() {
+	static public function GtkMenu() {
 		// Cria o FFWMenu
 		return new FFWMenu();
 	}
@@ -506,7 +510,7 @@ class Fabula {
 	 * @param string $label Texto do GtkMenuItem
 	 * @return FFWMenuItem
 	 */
-	public function GtkMenuItem($label="") {
+	static public function GtkMenuItem($label="") {
 		// Cria o FFWMenuItem
 		return new FFWMenuItem($label);
 	}
@@ -520,7 +524,7 @@ class Fabula {
 	 * @param int $border_with Espaço das bordas
 	 * @return FFWHButtonBox
 	 */
-	public function GtkHButtonBox($layout, $spacing, $border_width) {
+	static public function GtkHButtonBox($layout, $spacing, $border_width) {
 		// Cria o FFWHButtonBox
 		return new FFWHButtonBox($layout, $spacing, $border_width);
 	}
@@ -531,7 +535,7 @@ class Fabula {
 	 * @name Fabula::GtkProStatusBar()
 	 * @return FFWProStatusBar
 	 */
-	public function GtkProStatusBar() {
+	static public function GtkProStatusBar() {
 		// Cria o FFWProStatusBar
 		return new FFWProStatusBar();
 	}
@@ -547,7 +551,7 @@ class Fabula {
 	 * @param array $filter Vetor com as opções de filtro
 	 * @return FFWFileChooserDialog
 	 */
-	public function GtkFileChooserDialog($title, $window, $autorun=FALSE, $type=Gtk::FILE_CHOOSER_ACTION_OPEN, $filter=array()) {
+	static public function GtkFileChooserDialog($title, $window, $autorun=FALSE, $type=Gtk::FILE_CHOOSER_ACTION_OPEN, $filter=array()) {
 		// Cria o FFWFileChooserDialog
 		return new FFWFileChooserDialog($title, $window, $autorun, $type, $filter);
 	}
@@ -564,7 +568,7 @@ class Fabula {
 	 * @param bool $autorun Opção para auto executar o dialogo ao construir o objeto
 	 * @return FFWMessageDialog
 	 */
-	public function GtkMessageDialog($parent, $flags, $type, $buttons, $message, $autorun=FALSE) {
+	static public function GtkMessageDialog($parent, $flags, $type, $buttons, $message, $autorun=FALSE) {
 		// Cria o FFWMessageDialog
 		return new FFWMessageDialog($parent, $flags, $type, $buttons, $message, $autorun);
 	}
@@ -576,7 +580,7 @@ class Fabula {
 	 * @param GtkWindowType $type tipo da janela a ser criada
 	 * @return FFWWindow
 	 */
-	public function GtkWindow($type=Gtk::WINDOW_TOPLEVEL) {
+	static public function GtkWindow($type=Gtk::WINDOW_TOPLEVEL) {
 		return new FFWWindow($type);
 	}
 
@@ -585,7 +589,7 @@ class Fabula {
 	 *
 	 * @name DoEvents()
 	 */
-	public function DoEvents() {
+	static public function DoEvents() {
 		// Espera enquanto existe evento pendente
 		while(Gtk::events_pending()) {
 			// Libera o loop
@@ -601,20 +605,31 @@ class Fabula {
 	 * @param array $options Parametros à ser passado ao comando
 	 * @return Pipe
 	 */
-	public function PipeIO($command, $options=array()) {
+	static public function PipeIO($command, $options=array()) {
 		// Cria o objeto Pipe
 		return New Pipe($command, $options);
 	}
-
+	
 	/**
-	 * Método de criação do widget de exibição de videos
+	 * Método de criação do container GtkVBox
 	 *
-	 * @name GtkVideo()
-	 * @return FFWVideo
+	 * @name GtkVBox()
+	 * @return FFWVBox
 	 */
-	public function GtkVideo() {
-		// Cria o objeto FFWVideo
-		return New FFWVideo();
+	static public function GtkVBox($homogeneous=FALSE, $spacing=0) {
+		// Cria o objeto FFWVBox
+		return New FFWVBox($homogeneous, $spacing);
+	}
+	
+	/**
+	 * Método de criação do container GtkHBox
+	 *
+	 * @name GtkHBox()
+	 * @return FFWHBox
+	 */
+	static public function GtkHBox($homogeneous=FALSE, $spacing=0) {
+		// Cria o objeto FFWHBox
+		return New FFWHBox($homogeneous, $spacing);
 	}
 	
 	/**
@@ -623,8 +638,36 @@ class Fabula {
 	 * @name GtkSourceEditor()
 	 * @return FFWSourceEditor
 	 */
-	public function GtkSourceEditor() {
+	static public function GtkSourceEditor() {
 		// Cria o objeto FFWSourceEditor
 		return New FFWSourceEditor();
+	}
+	
+	/**
+	 * Método de criação do widget de exibição de videos
+	 *
+	 * @name GtkVideo()
+	 * @return FFWVideo
+	 */
+	static public function GtkVideo() {
+		// Cria o objeto FFWVideo
+		return New FFWVideo();
+	}
+	
+	/**
+	 * Método de criação do widget de edição de códigos
+	 *
+	 * @name GtkCodeEditor()
+	 * @return FFWCodeEditor
+	 */
+	static public function GtkCodeEditor($window) {
+		if(class_exists("GtkSourceView")) { // ifdef
+			// Cria o objeto FFWCodeEditor
+			return New FFWCodeEditor($window);
+		}
+		else { // elsedef
+			throw new Exception("O widget GtkSourceView parece não estar presente");
+		}
+		
 	}
 }
