@@ -2,6 +2,8 @@
 
 /**
  * Classe do widget GtkVideo
+ * 
+ * http://mplayerhq.hu/MPlayer/DOCS/tech/slave.txt
  *
  * @name Fabula::GtkVideo()
  * @see GtkEventbox
@@ -261,6 +263,8 @@ class FFWVideo extends GtkEventbox {
 				
 			// Inicia o video
 			$this->pipe->run();
+			
+			$this->__command("osd 0");
 				
 			// Muda o estado do video
 			$this->video_state = 1;
